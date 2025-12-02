@@ -1,17 +1,30 @@
 from pathlib import Path
+import re
+
+from tqdm import tqdm
 
 def do_main(debug_mode=False):
     with open(Path('02/input.txt')) as file:
         lines = [line.rstrip() for line in file]
-    
+
     if debug_mode:
         with open(Path('02/test.txt')) as file:
             lines = [line.rstrip() for line in file]
 
     point_sum = 0
+    point_sum2 = 0
 
-    for line_index, line in enumerate(lines):
-        r = [int(i) for i in line.split(" ")]
+    ranges = [(int(l.split("-")[0]), int(l.split("-")[1])) for l in lines[0].split(",")]
+
+    for r_min, r_max in tqdm(ranges):
+        for x in tqdm(range(r_min, r_max+1)):
+            if re.fullmatch(r"(\d+)\1", str(x)):
+                point_sum += x
+            if re.fullmatch(r"(\d+)\1+", str(x)):
+                point_sum2 += x
+
+    print(point_sum)
+    print(point_sum2)
 
 if __name__ == '__main__':
     do_main(False)
