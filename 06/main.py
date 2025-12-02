@@ -5,7 +5,7 @@ from helpers.get_input import get_lines
 
 
 def do_main(debug_mode=False):
-    lines = get_lines('06')
+    lines = get_lines('06', debug_mode)
 
     point_sum = 0
 

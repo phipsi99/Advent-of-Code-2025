@@ -7,7 +7,7 @@ destination_path = Path(__file__).parent.parent
 ONLY_INPUTS = False
 
 # Create the destination folders and copy files
-for i in range(2, 13):
+for i in range(3, 13):
     # Create the folder name with leading zero if necessary
     folder_name = f'{i:02d}'
 
