@@ -1,13 +1,9 @@
-from pathlib import Path
+
+from helpers.get_input import get_lines
 
 
 def do_main(debug_mode=False):
-    with open(Path("01/input.txt")) as file:
-        lines = [line.rstrip() for line in file]
-
-    if debug_mode:
-        with open(Path("01/test.txt")) as file:
-            lines = [line.rstrip() for line in file]
+    lines = get_lines('01')
 
     point_sum = 0
     point_sum2 = 0

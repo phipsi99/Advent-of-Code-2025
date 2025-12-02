@@ -1,12 +1,11 @@
 from pathlib import Path
+import re
+from tqdm import tqdm
+from helpers.get_input import get_lines
+
 
 def do_main(debug_mode=False):
-    with open(Path('06/input.txt')) as file:
-        lines = [line.rstrip() for line in file]
-    
-    if debug_mode:
-        with open(Path('06/test.txt')) as file:
-            lines = [line.rstrip() for line in file]
+    lines = get_lines('06')
 
     point_sum = 0
 

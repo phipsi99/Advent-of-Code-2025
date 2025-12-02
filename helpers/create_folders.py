@@ -1,11 +1,13 @@
 from pathlib import Path
 
 # Define the template folder path and the destination path
-template_folder = Path(__file__).parent / 'templates'
-destination_path = Path(__file__).parent
+template_folder = Path(__file__).parent.parent / 'templates'
+destination_path = Path(__file__).parent.parent
+
+ONLY_INPUTS = False
 
 # Create the destination folders and copy files
-for i in range(1, 13):
+for i in range(2, 13):
     # Create the folder name with leading zero if necessary
     folder_name = f'{i:02d}'
 
@@ -15,6 +17,8 @@ for i in range(1, 13):
 
     # Copy files from the template folder to the destination folder
     for source_file in template_folder.iterdir():
+        if ONLY_INPUTS and source_file.name == "main.py":
+            continue
         if source_file.is_file():
             main = source_file.read_text()
             if source_file.name == "main.py":
