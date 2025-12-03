@@ -8,7 +8,7 @@ def get_lines(day, debug_mode = False):
     if not lines:
         lines = [line.rstrip() for line in get_input(day).splitlines()]
         with open(Path(f'{day}/input.txt'), 'w') as file:
-            file.writelines(lines)
+            file.writelines([line + '\n' for line in lines])
     if debug_mode:
         with open(Path(f'{day}/test.txt')) as file:
             lines = [line.rstrip() for line in file]
